@@ -1,0 +1,23 @@
+__default__:
+    jobname: default
+    time: 1-00:00:00 # time limit for each job
+    ncpus: 1
+    memory: 2G
+    output: logs/default/job_default_%j.out
+    error: logs/default/job_default_%j.err
+
+all:
+    jobname: all
+    time: 0-00:05:00
+    ncpus: 1
+    memory: 50
+    output: logs/all/all_%j.out
+    error: logs/all/all_%j.err
+
+extract_metadata:
+    jobname: extract_metadata
+    time: 0-01:00:00
+    ncpus: 1
+    memory: 500
+    output: logs/extract_metadata/extract_metadata_%j.out
+    error: logs/extract_metadata/extract_metadata_%j.err

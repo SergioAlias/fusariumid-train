@@ -1,0 +1,21 @@
+########################
+# IMPORTANT INFORMATION:
+#
+# Variables commented with [ #cluster# ] must be
+# changed accordingly in cluster_config.yml
+########################
+
+
+### General ###
+
+proj_name: TEF1_FusID_classifiers   #-------#    Project name
+outdir: /scratch/salias/projects    #-------#    Directory with all projects
+q2_version: 2024.2                  #-------#    QIIME 2 version
+
+
+### Databases ###
+
+db_dir: /home/salias/data/sf_databases/FUSARIUM-ID/raw_db    #-------#    Directory where database is stored
+db_file: FUSARIUMID_v.3.0_TEF1.fas                           #-------#    Database filename
+
+

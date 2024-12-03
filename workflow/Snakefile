@@ -1,0 +1,49 @@
+import os, csv, json
+from snakemake.utils import min_version
+
+min_version("7.32.4")
+
+configfile: "config/config.yml"
+
+
+### helper functions
+
+def pathCreator(dir):
+    """ Return a lambda function that joins paths with the specified dir
+        Useful for not repeating paths all the time in rules
+    """
+    return lambda *args: os.path.join(dir, *args)
+
+### create log dirs
+
+logdirs = ["default",
+          "all",
+          "extract_metadata"]
+
+## directory variables and functions
+
+for d in logdirs:
+    os.makedirs(os.path.join("logs", d), exist_ok = True)
+
+proj_dir = os.path.join(config["outdir"], config["proj_name"])
+
+extract_metadata_dir = pathCreator(os.path.join(proj_dir, "extract_metadata"))
+
+## conda environment variables
+
+code_dir = os.path.abspath(os.getcwd())
+conda_env_dir = os.path.join(code_dir, "workflow", "envs")
+conda_qiime2 = os.path.join(conda_env_dir, f"qiime2-amplicon-{config['q2_version']}-py38-linux-conda.yml")
+
+## output handling
+
+alloutput = list()
+alloutput.append(extract_metadata_dir("metadata.tsv"))
+
+rule all:
+    input:
+        alloutput
+
+### load rules
+
+include: "rules/extract_metadata.smk"
