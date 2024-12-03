@@ -1,4 +1,4 @@
- # ⚙️ 🍄 FUSARIUM-ID Naive Bayes classifiers for QIIME 2
+ ## ⚙️ 🍄 FUSARIUM-ID Naive Bayes classifiers for QIIME 2
 
 > 🚧 *Work in progress: this pipeline and the pre-computed classifiers will be available soon!*
 
