@@ -33,7 +33,7 @@ source init_fusariumid_train.sh
 
 2. If needed, modify `time`, `ncpus` and `memory` variables in `config/cluster_config.yml`.
 
-3. Download FUSARIUM-ID v3.0 FASTA file from [https://github.com/fusariumid/fusariumid](https://github.com/fusariumid/fusariumid).
+3. Download FUSARIUM-ID v3.0 FASTA file from [https://github.com/fusariumid/fusariumid](https://github.com/fusariumid/fusariumid) (`FUSARIUMID_v.3.0_TEF1.fas`).
 
 4. Run the following command to start the workflow:
 ```bash
