@@ -8,7 +8,7 @@
 
 ### General ###
 
-proj_name: TEF1_FusID_classifiers   #-------#    Project name
+proj_name: fusariumid-q2-2024.2     #-------#    Project name
 outdir: /scratch/salias/projects    #-------#    Directory with all projects
 q2_version: 2024.2                  #-------#    QIIME 2 version
 

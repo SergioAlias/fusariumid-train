@@ -16,8 +16,16 @@ all:
 
 extract_metadata:
     jobname: extract_metadata
-    time: 0-01:00:00
+    time: 0-00:10:00
     ncpus: 1
     memory: 500
     output: logs/extract_metadata/extract_metadata_%j.out
     error: logs/extract_metadata/extract_metadata_%j.err
+
+build_taxonomy:
+    jobname: build_taxonomy
+    time: 0-00:10:00
+    ncpus: 1
+    memory: 500
+    output: logs/build_taxonomy/build_taxonomy_%j.out
+    error: logs/build_taxonomy/build_taxonomy_%j.err

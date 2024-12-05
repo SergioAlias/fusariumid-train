@@ -27,7 +27,7 @@ for d in logdirs:
 
 proj_dir = os.path.join(config["outdir"], config["proj_name"])
 
-extract_metadata_dir = pathCreator(os.path.join(proj_dir, "extract_metadata"))
+metadata_dir = pathCreator(os.path.join(proj_dir, "metadata"))
 
 ## conda environment variables
 
@@ -38,7 +38,7 @@ conda_qiime2 = os.path.join(conda_env_dir, f"qiime2-amplicon-{config['q2_version
 ## output handling
 
 alloutput = list()
-alloutput.append(extract_metadata_dir("metadata.tsv"))
+alloutput.append(metadata_dir("taxonomy.tsv"))
 
 rule all:
     input:
@@ -47,3 +47,4 @@ rule all:
 ### load rules
 
 include: "rules/extract_metadata.smk"
+include: "rules/build_taxonomy.smk"
