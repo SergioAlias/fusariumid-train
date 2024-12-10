@@ -17,5 +17,5 @@ q2_version: 2024.2                  #-------#    QIIME 2 version
 
 db_dir: /home/salias/data/sf_databases/FUSARIUM-ID/raw_db    #-------#    Directory where database is stored
 db_file: FUSARIUMID_v.3.0_TEF1.fas                           #-------#    Database filename
-
+correction_file: corrections.tsv                             #-------#    Headerless 2-column TSV file containing original and replacement strings for correcting FUSARIUM-ID format inconsistencies
 

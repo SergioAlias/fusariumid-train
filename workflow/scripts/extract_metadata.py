@@ -5,13 +5,10 @@
 
 # Small script for extracting metadata from FASTA headings of FUSARIUM-ID v3.0 file
 
-import os, sys
+import sys
 
 input_file = sys.argv[1]
 output_file = sys.argv[2]
-outdir = sys.argv[3]
-
-os.makedirs(outdir, exist_ok = True)
 
 with open(input_file, 'r') as fasta_file, open(output_file, 'w') as tsv_file:
     for line in fasta_file:

@@ -1,10 +1,9 @@
 rule build_taxonomy:
     input:
-        metadata_dir("metadata.tsv")
+        metadata_dir("reduced_metadata.tsv")
     output:
         metadata_dir("taxonomy.tsv")
-    params:
     shell:
         """
-        time awk -F'\t' 'BEGIN {{ OFS="\t" }} {{ print $1, $4 "__" $5 }}' {input} > {output}
+        time python3 workflow/scripts/build_taxonomy.py {input} {output}
         """

@@ -10,9 +10,11 @@ A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [Q
 
 This pipeline:
 
-1. Parses the multi-FASTA headers searching metadata and saves it as a TSV file (rules `extract_metadata` and `build_taxonomy`). You can read about how FUSARIUM-ID stores metadata in [this manual](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutorials.pdf) (Spanish version [here](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutoriales_Espan%CC%83ol.pdf)) and in the [FUSARIUM-ID publication](https://apsjournals.apsnet.org/doi/10.1094/PDIS-09-21-2105-SR).
+1. Parses the multi-FASTA headers searching metadata and saves it as a TSV file. You can read about how FUSARIUM-ID stores metadata in [this manual](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutorials.pdf) (Spanish version [here](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutoriales_Espan%CC%83ol.pdf)) and in the [FUSARIUM-ID publication](https://apsjournals.apsnet.org/doi/10.1094/PDIS-09-21-2105-SR).
 
-2. More coming soon.
+2. Formats metadata to match SILVA and UNITE taxonomy style.
+
+3. More coming soon.
 
 ## Requisites
 

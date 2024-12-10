@@ -18,7 +18,10 @@ def pathCreator(dir):
 
 logdirs = ["default",
           "all",
-          "extract_metadata"]
+          "correct_format",
+          "extract_metadata",
+          "reduce_metadata",
+          "build_taxonomy"]
 
 ## directory variables and functions
 
@@ -35,6 +38,10 @@ code_dir = os.path.abspath(os.getcwd())
 conda_env_dir = os.path.join(code_dir, "workflow", "envs")
 conda_qiime2 = os.path.join(conda_env_dir, f"qiime2-amplicon-{config['q2_version']}-py38-linux-conda.yml")
 
+## correct format file
+
+correct_format_filepath = os.path.join(code_dir, "resources", config["correction_file"])
+
 ## output handling
 
 alloutput = list()
@@ -46,5 +53,7 @@ rule all:
 
 ### load rules
 
+include: "rules/correct_format.smk"
 include: "rules/extract_metadata.smk"
+include: "rules/reduce_metadata.smk"
 include: "rules/build_taxonomy.smk"
