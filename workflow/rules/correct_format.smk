@@ -6,9 +6,13 @@ rule correct_format:
     params:
         outdir = metadata_dir(),
         correction_filepath = correct_format_filepath
+    conda:
+        conda_correct
     shell:
         """
         mkdir -p {params.outdir}
         SED_SCRIPT=$(awk -F'\t' '{{print "s/" $1 "/" $2 "/g"}}' "{params.correction_filepath}")
         sed "$SED_SCRIPT" "{input}" > "{output}"
+        mac2unix {output}
+        printf "\n" >> {output}
         """

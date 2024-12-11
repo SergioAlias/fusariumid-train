@@ -21,7 +21,8 @@ logdirs = ["default",
           "correct_format",
           "extract_metadata",
           "reduce_metadata",
-          "build_taxonomy"]
+          "build_taxonomy",
+          "import_q2"]
 
 ## directory variables and functions
 
@@ -31,12 +32,14 @@ for d in logdirs:
 proj_dir = os.path.join(config["outdir"], config["proj_name"])
 
 metadata_dir = pathCreator(os.path.join(proj_dir, "metadata"))
+qiime2_dir = pathCreator(os.path.join(proj_dir, "qiime2"))
 
 ## conda environment variables
 
 code_dir = os.path.abspath(os.getcwd())
 conda_env_dir = os.path.join(code_dir, "workflow", "envs")
 conda_qiime2 = os.path.join(conda_env_dir, f"qiime2-amplicon-{config['q2_version']}-py38-linux-conda.yml")
+conda_correct = os.path.join(conda_env_dir, "correct.yml")
 
 ## correct format file
 
@@ -45,7 +48,8 @@ correct_format_filepath = os.path.join(code_dir, "resources", config["correction
 ## output handling
 
 alloutput = list()
-alloutput.append(metadata_dir("taxonomy.tsv"))
+alloutput.append(qiime2_dir("imported", "fid_taxonomy.qza"))
+alloutput.append(qiime2_dir("imported", "fid_sequences.qza"))
 
 rule all:
     input:
@@ -57,3 +61,4 @@ include: "rules/correct_format.smk"
 include: "rules/extract_metadata.smk"
 include: "rules/reduce_metadata.smk"
 include: "rules/build_taxonomy.smk"
+include: "rules/import_q2.smk"

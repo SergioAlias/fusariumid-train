@@ -37,3 +37,11 @@ build_taxonomy:
     memory: 500
     output: logs/build_taxonomy/build_taxonomy_%j.out
     error: logs/build_taxonomy/build_taxonomy_%j.err
+
+import_q2:
+    jobname: import_q2
+    time: 0-01:00:00
+    ncpus: 1
+    memory: 500
+    output: logs/import_q2/import_q2_%j.out
+    error: logs/import_q2/import_q2_%j.err

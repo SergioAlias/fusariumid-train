@@ -14,7 +14,9 @@ This pipeline:
 
 2. Formats metadata to match SILVA and UNITE taxonomy style.
 
-3. More coming soon.
+3. Imports taxonomy and sequences into QIIME 2.
+
+4. More coming soon.
 
 ## Requisites
 
