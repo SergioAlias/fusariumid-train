@@ -21,7 +21,7 @@ This pipeline:
 
 3. Imports taxonomy and sequences into QIIME 2.
 
-4. More coming soon... 🔜
+4. More coming soon...
 
 ## Requisites
 
