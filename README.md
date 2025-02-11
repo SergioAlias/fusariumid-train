@@ -1,4 +1,4 @@
-# <img src="./.img/fidt_gh.png" width="500">
+# <img src="./.img/fidt_negative.png" width="500">
 
 [![Snakemake](https://img.shields.io/badge/Snakemake-7.32.4-ffffff.svg)](https://snakemake.github.io)
 [![QIIME 2](https://img.shields.io/badge/QIIME2-2024.2-d54050.svg)](https://qiime2.org/)
