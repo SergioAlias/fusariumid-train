@@ -45,3 +45,11 @@ import_q2:
     memory: 500
     output: logs/import_q2/import_q2_%j.out
     error: logs/import_q2/import_q2_%j.err
+
+train:
+    jobname: train
+    time: 0-23:59:00
+    ncpus: 1
+    memory: 10G
+    output: logs/train/train_%j.out
+    error: logs/train/train_%j.err

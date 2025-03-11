@@ -22,7 +22,8 @@ logdirs = ["default",
           "extract_metadata",
           "reduce_metadata",
           "build_taxonomy",
-          "import_q2"]
+          "import_q2",
+          "train"]
 
 ## directory variables and functions
 
@@ -48,8 +49,7 @@ correct_format_filepath = os.path.join(code_dir, "resources", config["correction
 ## output handling
 
 alloutput = list()
-alloutput.append(qiime2_dir("imported", "fid_taxonomy.qza"))
-alloutput.append(qiime2_dir("imported", "fid_sequences.qza"))
+alloutput.append(qiime2_dir("classifier", "fid_classifier.qza"))
 
 rule all:
     input:
@@ -62,3 +62,4 @@ include: "rules/extract_metadata.smk"
 include: "rules/reduce_metadata.smk"
 include: "rules/build_taxonomy.smk"
 include: "rules/import_q2.smk"
+include: "rules/train.smk"
