@@ -48,8 +48,8 @@ import_q2:
 
 train:
     jobname: train
-    time: 0-23:59:00
+    time: 0-02:00:00
     ncpus: 2
-    memory: 200G
+    memory: 90G
     output: logs/train/train_%j.out
     error: logs/train/train_%j.err
