@@ -39,7 +39,7 @@ qiime2_dir = pathCreator(os.path.join(proj_dir, "qiime2"))
 
 code_dir = os.path.abspath(os.getcwd())
 conda_env_dir = os.path.join(code_dir, "workflow", "envs")
-conda_qiime2 = os.path.join(conda_env_dir, f"qiime2-amplicon-{config['q2_version']}-py38-linux-conda.yml")
+conda_qiime2 = os.path.join(conda_env_dir, f"qiime2-amplicon-{config['q2_version']}-py{config['py_version']}-linux-conda.yml")
 conda_correct = os.path.join(conda_env_dir, "correct.yml")
 
 ## correct format file
