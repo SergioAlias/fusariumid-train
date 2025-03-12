@@ -5,9 +5,11 @@
 
 ⚙️ 🍄 **FUSARIUM-ID Naive Bayes classifiers for QIIME 2**
 
-> 🚧 ***Work in progress*** 🚧
-> 
-> *This pipeline and the pre-computed classifiers will be available soon!*
+---
+
+### [🎉 Pre-trained QIIME 2 classifiers available!](https://github.com/SergioAlias/fusariumid-train/releases)
+
+---
 
 A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [QIIME 2](https://qiime2.org/) taxonomic [Naive Bayes classifiers](https://resources.qiime2.org/#qiime-2-2024-5-present) for the [FUSARIUM-ID database](https://github.com/fusariumid/fusariumid). This database contains sequences of the Translation Elongation Factor 1 alpha (TEF1), which serves as a considerably better marker for species identification in the filamentous fungal genus [*Fusarium*](https://en.wikipedia.org/wiki/Fusarium) than [ITS](https://en.wikipedia.org/wiki/Internal_transcribed_spacer), the standard marker for all Fungi.
 
