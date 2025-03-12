@@ -10,8 +10,8 @@
 
 proj_name: fusariumid-q2-2024.10    #-------#    Project name
 outdir: /scratch/salias/projects    #-------#    Directory with all projects
-q2_version: 2024.10                 #-------#    QIIME 2 version
-py_version: 310                     #-------#    Python version (as in the QIIME 2 YAML filename)
+q2_version: "2024.10"               #-------#    QIIME 2 version
+py_version: "310"                   #-------#    Python version (as in the QIIME 2 YAML filename)
 
 ### Databases ###
 
