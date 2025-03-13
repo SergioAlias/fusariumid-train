@@ -1,6 +1,6 @@
 # <img src="./.img/fidt_negative.png" width="500">
 
-![Release-date](https://img.shields.io/github/release-date-pre/SergioAlias/fusariumid-train?display_date=published_at&label=Release+date)
+[![Release-date](https://img.shields.io/github/release-date-pre/SergioAlias/fusariumid-train?display_date=published_at&label=Release+date)](https://github.com/SergioAlias/fusariumid-train/releases)
 [![Downloads](https://img.shields.io/github/downloads/SergioAlias/fusariumid-train/total.svg?label=Downloads)](https://github.com/SergioAlias/fusariumid-train/releases)
 [![Snakemake](https://img.shields.io/badge/Snakemake-7.32.4-ffffff.svg)](https://snakemake.github.io)
 [![QIIME 2](https://img.shields.io/badge/QIIME2-2024.10-0096FF.svg)](https://qiime2.org/)
