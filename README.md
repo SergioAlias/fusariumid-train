@@ -9,7 +9,7 @@
 
 ---
 
-### [🎉 Pre-trained FUSAIRUM-ID classifiers available!](https://github.com/SergioAlias/fusariumid-train/releases)
+### [🎉 Pre-trained FUSARIUM-ID classifiers available here!](https://github.com/SergioAlias/fusariumid-train/releases)
 
 ---
 
