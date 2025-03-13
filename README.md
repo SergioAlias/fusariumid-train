@@ -1,17 +1,21 @@
 # <img src="./.img/fidt_negative.png" width="500">
 
+![Release-date](https://img.shields.io/github/release-date-pre/SergioAlias/fusariumid-train?display_date=published_at&label=Release+date)
+[![Downloads](https://img.shields.io/github/downloads/SergioAlias/fusariumid-train/total.svg?label=Downloads)](https://github.com/SergioAlias/fusariumid-train/releases)
 [![Snakemake](https://img.shields.io/badge/Snakemake-7.32.4-ffffff.svg)](https://snakemake.github.io)
-[![QIIME 2](https://img.shields.io/badge/QIIME2-2024.10-d54050.svg)](https://qiime2.org/)
+[![QIIME 2](https://img.shields.io/badge/QIIME2-2024.10-0096FF.svg)](https://qiime2.org/)
 
 ⚙️ 🍄 **FUSARIUM-ID Naive Bayes classifiers for QIIME 2**
 
 ---
 
-### [🎉 Pre-trained QIIME 2 classifiers available!](https://github.com/SergioAlias/fusariumid-train/releases)
+### [🎉 Pre-trained FUSAIRUM-ID classifiers available!](https://github.com/SergioAlias/fusariumid-train/releases)
 
 ---
 
 A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [QIIME 2](https://qiime2.org/) taxonomic [Naive Bayes classifiers](https://resources.qiime2.org/#qiime-2-2024-5-present) for the [FUSARIUM-ID database](https://github.com/fusariumid/fusariumid). This database contains sequences of the Translation Elongation Factor 1 alpha (TEF1), which serves as a considerably better marker for species identification in the filamentous fungal genus [*Fusarium*](https://en.wikipedia.org/wiki/Fusarium) than [ITS](https://en.wikipedia.org/wiki/Internal_transcribed_spacer), the standard marker for all Fungi.
+
+If you don't want to run the workflow, you can [pick one of the pre-computed classfiers here!](https://github.com/SergioAlias/fusariumid-train/releases)
 
 >🐍 *This workflow uses Snakemake 7.32.4. Newer versions (8+) contain [backwards incompatible changes](https://snakemake.readthedocs.io/en/stable/getting_started/migration.html) that may result in this pipeline not working in a Slurm HPC queue system.*
 
@@ -23,7 +27,7 @@ This pipeline:
 
 3. Imports taxonomy and sequences into QIIME 2.
 
-4. More coming soon...
+4. Trains a Naive Bayes classfier that can be used in [`qiime feature-classifier classify-sklearn`](https://docs.qiime2.org/2024.10/plugins/available/feature-classifier/classify-sklearn/).
 
 ## Requisites
 
@@ -39,14 +43,13 @@ The only prerequisite is having Conda installed. In this regard, we **highly rec
 ```bash
 source init_fusariumid_train.sh
 ```
+4. Download FUSARIUM-ID v3.0 FASTA file from [https://github.com/fusariumid/fusariumid](https://github.com/fusariumid/fusariumid) (`FUSARIUMID_v.3.0_TEF1.fas`).
+   
+5. Edit `config/config.yml` with your specific requirements. Variables annotated with #cluster# must also be updated in `config/cluster_config.yml`.
 
-1. Edit `config/config.yml` with your specific requirements. Variables annotated with #cluster# must also be updated in `config/cluster_config.yml`.
+6. If needed, modify `time`, `ncpus` and `memory` variables in `config/cluster_config.yml`.
 
-2. If needed, modify `time`, `ncpus` and `memory` variables in `config/cluster_config.yml`.
-
-3. Download FUSARIUM-ID v3.0 FASTA file from [https://github.com/fusariumid/fusariumid](https://github.com/fusariumid/fusariumid) (`FUSARIUMID_v.3.0_TEF1.fas`).
-
-4. Run the following command to start the workflow:
+7. Run the following command to start the workflow:
 ```bash
 fidt_run
 ```
