@@ -37,7 +37,7 @@ The only prerequisite is having Conda installed. In this regard, we **highly rec
 
 1. Clone the repository
 
-2. Create a Screen (see section **Immediate submit and Screen**)
+2. Create a Screen (see section [**Immediate submit and Screen**](#immediate-submit-and-screen))
 
 3. Run the following command to download (if needed) and activate the FUSARIUM-ID-train environment, and to set aliases for the main functions:
 ```bash
