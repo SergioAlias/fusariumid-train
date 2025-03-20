@@ -9,13 +9,15 @@
 
 ---
 
-### [🎉 Pre-trained FUSARIUM-ID classifiers available here!](https://github.com/SergioAlias/fusariumid-train/releases)
+> 🚧 **IMPORTANT: A major re-optimization is currently underway!** Pre-trained classifiers have been temporarily removed because I am making substantial changes to the workflow. This banner will disappear when everything is back to normal. In the meantime, I do not recommend using the workflow either.
+
+### ~~[🎉 Pre-trained FUSARIUM-ID classifiers available here!](https://github.com/SergioAlias/fusariumid-train/releases)~~
 
 ---
 
 A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [QIIME 2](https://qiime2.org/) taxonomic [Naive Bayes classifiers](https://resources.qiime2.org/#qiime-2-2024-5-present) for the [FUSARIUM-ID database](https://github.com/fusariumid/fusariumid). This database contains sequences of the Translation Elongation Factor 1 alpha (TEF1), which serves as a considerably better marker for species identification in the filamentous fungal genus [*Fusarium*](https://en.wikipedia.org/wiki/Fusarium) than [ITS](https://en.wikipedia.org/wiki/Internal_transcribed_spacer), the standard marker for all Fungi.
 
-If you don't want to run the workflow, you can [pick one of the pre-computed classfiers here!](https://github.com/SergioAlias/fusariumid-train/releases)
+If you don't want to run the workflow, you can ~~[pick one of the pre-computed classfiers here!](https://github.com/SergioAlias/fusariumid-train/releases)~~
 
 >🐍 *This workflow uses Snakemake 7.32.4. Newer versions (8+) contain [backwards incompatible changes](https://snakemake.readthedocs.io/en/stable/getting_started/migration.html) that may result in this pipeline not working in a Slurm HPC queue system.*
 
