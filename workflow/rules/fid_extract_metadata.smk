@@ -1,4 +1,4 @@
-rule extract_metadata:
+rule fid_extract_metadata:
     input:
         metadata_dir("corrected_db.fas")
     output:

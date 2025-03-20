@@ -18,11 +18,11 @@ def pathCreator(dir):
 
 logdirs = ["default",
           "all",
-          "correct_format",
-          "extract_metadata",
-          "reduce_metadata",
-          "build_taxonomy",
-          "import_q2",
+          "fid_correct_format",
+          "fid_extract_metadata",
+          "fid_reduce_metadata",
+          "fid_build_taxonomy",
+          "fid_import_q2",
           "train"]
 
 ## directory variables and functions
@@ -57,9 +57,9 @@ rule all:
 
 ### load rules
 
-include: "rules/correct_format.smk"
-include: "rules/extract_metadata.smk"
-include: "rules/reduce_metadata.smk"
-include: "rules/build_taxonomy.smk"
-include: "rules/import_q2.smk"
+include: "rules/fid_correct_format.smk"
+include: "rules/fid_extract_metadata.smk"
+include: "rules/fid_reduce_metadata.smk"
+include: "rules/fid_build_taxonomy.smk"
+include: "rules/fid_import_q2.smk"
 include: "rules/train.smk"

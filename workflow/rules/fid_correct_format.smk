@@ -1,4 +1,4 @@
-rule correct_format:
+rule fid_correct_format:
     input:
         os.path.join(config["db_dir"], config["db_file"])
     output:

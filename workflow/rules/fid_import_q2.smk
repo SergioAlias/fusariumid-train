@@ -1,4 +1,4 @@
-rule import_q2:
+rule fid_import_q2:
     input:
         i_sequences = metadata_dir("corrected_db.fas"),
         i_taxonomy = metadata_dir("taxonomy.tsv")

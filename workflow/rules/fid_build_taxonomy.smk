@@ -1,4 +1,4 @@
-rule build_taxonomy:
+rule fid_build_taxonomy:
     input:
         metadata_dir("reduced_metadata.tsv")
     output:

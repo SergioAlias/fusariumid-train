@@ -14,37 +14,45 @@ all:
     output: logs/all/all_%j.out
     error: logs/all/all_%j.err
 
-correct_format:
-    jobname: correct_format
+fid_correct_format:
+    jobname: fid_correct_format
     time: 0-00:10:00
     ncpus: 1
     memory: 500
-    output: logs/correct_format/correct_format_%j.out
-    error: logs/correct_format/correct_format_%j.err
+    output: logs/fid_correct_format/fid_correct_format_%j.out
+    error: logs/fid_correct_format/fid_correct_format_%j.err
 
-extract_metadata:
-    jobname: extract_metadata
+fid_extract_metadata:
+    jobname: fid_extract_metadata
     time: 0-00:10:00
     ncpus: 1
     memory: 500
-    output: logs/extract_metadata/extract_metadata_%j.out
-    error: logs/extract_metadata/extract_metadata_%j.err
+    output: logs/fid_extract_metadata/fid_extract_metadata_%j.out
+    error: logs/fid_extract_metadata/fid_extract_metadata_%j.err
 
-build_taxonomy:
-    jobname: build_taxonomy
+fid_reduce_metadata:
+    jobname: fid_reduce_metadata
     time: 0-00:10:00
     ncpus: 1
     memory: 500
-    output: logs/build_taxonomy/build_taxonomy_%j.out
-    error: logs/build_taxonomy/build_taxonomy_%j.err
+    output: logs/fid_reduce_metadata/fid_reduce_metadata_%j.out
+    error: logs/fid_reduce_metadata/fid_reduce_metadata_%j.err
 
-import_q2:
-    jobname: import_q2
+fid_build_taxonomy:
+    jobname: fid_build_taxonomy
+    time: 0-00:10:00
+    ncpus: 1
+    memory: 500
+    output: logs/fid_build_taxonomy/fid_build_taxonomy_%j.out
+    error: logs/fid_build_taxonomy/fid_build_taxonomy_%j.err
+
+fid_import_q2:
+    jobname: fid_import_q2
     time: 0-01:00:00
     ncpus: 1
     memory: 500
-    output: logs/import_q2/import_q2_%j.out
-    error: logs/import_q2/import_q2_%j.err
+    output: logs/fid_import_q2/fid_import_q2_%j.out
+    error: logs/fid_import_q2/fid_import_q2_%j.err
 
 train:
     jobname: train

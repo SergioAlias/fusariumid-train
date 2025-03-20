@@ -1,4 +1,4 @@
-rule reduce_metadata:
+rule fid_reduce_metadata:
     input:
         metadata_dir("metadata.tsv")
     output:
