@@ -10,8 +10,8 @@
 
 proj_name: fusariumid-q2-2024.10    #-------#    Project name
 outdir: /scratch/salias/projects    #-------#    Directory with all projects
-q2_version: "2024.10"               #-------#    QIIME 2 version
-py_version: "310"                   #-------#    Python version (as in the QIIME 2 YAML filename)
+q2_version: "2024.2"               #-------#    QIIME 2 version
+py_version: "38"                   #-------#    Python version (as in the QIIME 2 YAML filename)
 
 ### Databases ###
 
@@ -19,3 +19,6 @@ db_dir: /home/salias/data/sf_databases/FUSARIUM-ID/raw_db    #-------#    Direct
 db_file: FUSARIUMID_v.3.0_TEF1.fas                           #-------#    Database filename
 correction_file: corrections.tsv                             #-------#    Headerless 2-column TSV file containing original and replacement strings for correcting FUSARIUM-ID format inconsistencies
 
+### Download TEF1 sequences from NCBI GenBank ###
+
+query_file: query.txt    #-------#    File containing the query for the GenBank TEF1 sequence search (adapted from 10.1371/journal.pone.0207988)

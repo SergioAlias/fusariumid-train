@@ -3,7 +3,7 @@
 [![Release-date](https://img.shields.io/github/release-date-pre/SergioAlias/fusariumid-train?display_date=published_at&label=Release+date)](https://github.com/SergioAlias/fusariumid-train/releases)
 [![Downloads](https://img.shields.io/github/downloads/SergioAlias/fusariumid-train/total.svg?label=Downloads)](https://github.com/SergioAlias/fusariumid-train/releases)
 [![Snakemake](https://img.shields.io/badge/Snakemake-7.32.4-ffffff.svg)](https://snakemake.github.io)
-[![QIIME 2](https://img.shields.io/badge/QIIME2-2024.10-0096FF.svg)](https://qiime2.org/)
+[![QIIME 2](https://img.shields.io/badge/QIIME2-2024.2-0096FF.svg)](https://qiime2.org/)
 
 ⚙️ 🍄 **FUSARIUM-ID Naive Bayes classifiers for QIIME 2**
 
@@ -15,7 +15,7 @@
 
 ---
 
-A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [QIIME 2](https://qiime2.org/) taxonomic [Naive Bayes classifiers](https://resources.qiime2.org/#qiime-2-2024-5-present) for the [FUSARIUM-ID database](https://github.com/fusariumid/fusariumid). This database contains sequences of the Translation Elongation Factor 1 alpha (TEF1), which serves as a considerably better marker for species identification in the filamentous fungal genus [*Fusarium*](https://en.wikipedia.org/wiki/Fusarium) than [ITS](https://en.wikipedia.org/wiki/Internal_transcribed_spacer), the standard marker for all Fungi.
+A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [QIIME 2](https://qiime2.org/) taxonomic [Naive Bayes classifiers](https://resources.qiime2.org/#qiime-2-2024-5-present) for the [FUSARIUM-ID database](https://github.com/fusariumid/fusariumid). This database contains sequences of the Translation Elongation Factor 1 alpha (TEF1, also known as EF1α), which serves as a considerably better marker for species identification in the filamentous fungal genus [*Fusarium*](https://en.wikipedia.org/wiki/Fusarium) than [ITS](https://en.wikipedia.org/wiki/Internal_transcribed_spacer), the standard marker for all Fungi.
 
 If you don't want to run the workflow, you can ~~[pick one of the pre-computed classfiers here!](https://github.com/SergioAlias/fusariumid-train/releases)~~
 
@@ -23,13 +23,17 @@ If you don't want to run the workflow, you can ~~[pick one of the pre-computed c
 
 This pipeline:
 
-1. Parses the multi-FASTA headers searching metadata and saves it as a TSV file. You can read about how FUSARIUM-ID stores metadata in [this manual](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutorials.pdf) (Spanish version [here](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutoriales_Espan%CC%83ol.pdf)) and in the [FUSARIUM-ID publication](https://apsjournals.apsnet.org/doi/10.1094/PDIS-09-21-2105-SR).
+1. Parses the FUSARIUM-ID multi-FASTA headers searching metadata and saves it as a TSV file. You can read about how FUSARIUM-ID stores metadata in [this manual](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutorials.pdf) (Spanish version [here](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutoriales_Espan%CC%83ol.pdf)) and in the [FUSARIUM-ID publication](https://apsjournals.apsnet.org/doi/10.1094/PDIS-09-21-2105-SR).
 
 2. Formats metadata to match SILVA and UNITE taxonomy style.
 
-3. Imports taxonomy and sequences into QIIME 2.
+3. Downloads TEF1 sequences from GenBank for non-*Fusarium* fungi and other eukaryotes.
 
-4. Trains a Naive Bayes classfier that can be used in [`qiime feature-classifier classify-sklearn`](https://docs.qiime2.org/2024.10/plugins/available/feature-classifier/classify-sklearn/).
+4. **🚧 ...Work in progress here... 🚧**
+
+5. Imports taxonomy and sequences into QIIME 2.
+
+6.  Trains a Naive Bayes classfier that can be used in [`qiime feature-classifier classify-sklearn`](https://docs.qiime2.org/2024.2/plugins/available/feature-classifier/classify-sklearn/).
 
 ## Requisites
 
