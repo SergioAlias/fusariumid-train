@@ -23,6 +23,8 @@ logdirs = ["default",
           "fid_reduce_metadata",
           "fid_build_taxonomy",
           "fid_import_q2",
+          "filter_ncbi",
+          "merge_fid_ncbi",
           "train"]
 
 ## directory variables and functions
@@ -46,10 +48,19 @@ conda_correct = os.path.join(conda_env_dir, "correct.yml")
 
 correct_format_filepath = os.path.join(code_dir, "resources", config["correction_file"])
 
+## read NCBI query
+
+with open(os.path.join("resources", config["query_file"]), 'r') as f:
+  ncbi_query = f.read()
+
 ## output handling
 
 alloutput = list()
-alloutput.append(qiime2_dir("classifier", "fid_classifier.qza"))
+alloutput.append(qiime2_dir("classifier", "fid_ncbi_classifier.qza"))
+
+## rules
+
+localrules: all, download_ncbi
 
 rule all:
     input:
@@ -62,4 +73,7 @@ include: "rules/fid_extract_metadata.smk"
 include: "rules/fid_reduce_metadata.smk"
 include: "rules/fid_build_taxonomy.smk"
 include: "rules/fid_import_q2.smk"
+include: "rules/download_ncbi.smk"
+include: "rules/filter_ncbi.smk"
+include: "rules/merge_fid_ncbi.smk"
 include: "rules/train.smk"

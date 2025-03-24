@@ -1,9 +1,9 @@
 rule train:
     input:
-        i_sequences = qiime2_dir("imported", "fid_sequences.qza"),
-        i_taxonomy = qiime2_dir("imported", "fid_taxonomy.qza") 
+        i_sequences = qiime2_dir("merged", "merged_sequences.qza"),
+        i_taxonomy = qiime2_dir("merged", "merged_taxonomy.qza") 
     output:
-        o_classifier = qiime2_dir("classifier", "fid_classifier.qza")      
+        o_classifier = qiime2_dir("classifier", "fid_ncbi_classifier.qza")      
     params:
         outdir = qiime2_dir("classifier")
     conda:

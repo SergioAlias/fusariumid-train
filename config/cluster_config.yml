@@ -61,3 +61,19 @@ train:
     memory: 90G
     output: logs/train/train_%j.out
     error: logs/train/train_%j.err
+
+filter_ncbi:
+    jobname: filter_ncbi
+    time: 0-02:00:00
+    ncpus: 2
+    memory: 10G
+    output: logs/filter_ncbi/filter_ncbi_%j.out
+    error: logs/filter_ncbi/filter_ncbi_%j.err
+
+merge_fid_ncbi:
+    jobname: merge_fid_ncbi
+    time: 0-01:00:00
+    ncpus: 1
+    memory: 2G
+    output: logs/merge_fid_ncbi/merge_fid_ncbi_%j.out
+    error: logs/merge_fid_ncbi/merge_fid_ncbi_%j.err
