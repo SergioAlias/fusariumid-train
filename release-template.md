@@ -1,10 +1,10 @@
 # FUSARIUM-ID v3.0 for QIIME 2 version 2024.2
 
-Naive Bayes Classifiers for [FUSARIUM-ID v3.0](https://github.com/fusariumid/fusariumid/releases/tag/v.3.0) trained for QIIME 2 version [2024.2](https://docs.qiime2.org/2024.2/install/).
+Naive Bayes Classifier for [FUSARIUM-ID v3.0](https://github.com/fusariumid/fusariumid/releases/tag/v.3.0) trained for QIIME 2 version [2024.2](https://docs.qiime2.org/2024.2/install/).
 
-I am not affiliated to the FUSARIUM-ID team. Classifiers are provided _as is_, without any guarantees or warranties.
+I am not affiliated to the FUSARIUM-ID team. Classifier is provided _as is_, without any guarantees or warranties.
 
-If you use these classifiers, you should cite the following papers:
+If you use the classifier, you should cite the following papers:
 
 - **Workflow methods:**
 > Bokulich, N. A., Kaehler, B. D., Rideout, J. R., Dillon, M., Bolyen, E., Knight, R., Huttley, G. A., & Caporaso, J. G. (2018). Optimizing taxonomic classification of marker-gene amplicon sequences with QIIME 2’s q2-feature-classifier plugin. Microbiome, 6(1), 90. https://doi.org/10.1186/s40168-018-0470-z
