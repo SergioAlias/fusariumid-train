@@ -54,14 +54,6 @@ fid_import_q2:
     output: logs/fid_import_q2/fid_import_q2_%j.out
     error: logs/fid_import_q2/fid_import_q2_%j.err
 
-train:
-    jobname: train
-    time: 0-02:00:00
-    ncpus: 2
-    memory: 90G
-    output: logs/train/train_%j.out
-    error: logs/train/train_%j.err
-
 filter_ncbi:
     jobname: filter_ncbi
     time: 0-02:00:00
@@ -77,3 +69,11 @@ merge_fid_ncbi:
     memory: 2G
     output: logs/merge_fid_ncbi/merge_fid_ncbi_%j.out
     error: logs/merge_fid_ncbi/merge_fid_ncbi_%j.err
+    
+train:
+    jobname: train
+    time: 0-10:00:00
+    ncpus: 2
+    memory: 90G
+    output: logs/train/train_%j.out
+    error: logs/train/train_%j.err
