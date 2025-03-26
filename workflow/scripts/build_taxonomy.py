@@ -20,7 +20,7 @@ with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outf
             genus, specific_epithet = rest.split("_", 1)
             taxonomy = (
                 f"k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreales;"
-                f"f__Nectriaceae;g__{genus};s__{genus}_{specific_epithet}"
+                f"f__Nectriaceae;g__{genus};s__{specific_epithet}"
             )
         else:
             genus_species = second_col.split("__")
@@ -30,7 +30,7 @@ with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outf
                 strain_name = genus_species[0]
                 taxonomy = (
                     f"k__Fungi;p__Ascomycota;c__Sordariomycetes;o__Hypocreales;"
-                    f"f__Nectriaceae;g__{genus};s__{genus}_{specific_epithet}_{strain_name}"
+                    f"f__Nectriaceae;g__{genus};s__{specific_epithet}"
                 )
             else:
                 taxonomy = "FIDT-error: Unexpected format"

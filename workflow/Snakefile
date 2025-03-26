@@ -25,6 +25,7 @@ logdirs = ["default",
           "fid_import_q2",
           "filter_ncbi",
           "merge_fid_ncbi",
+          "extract_primers",
           "train"]
 
 ## directory variables and functions
@@ -53,6 +54,21 @@ correct_format_filepath = os.path.join(code_dir, "resources", config["correction
 with open(os.path.join("resources", config["query_file"]), 'r') as f:
   ncbi_query = f.read()
 
+## optional extract_primers rule handling
+
+if config["extract_primers"] == True:
+  train_input_seqs = qiime2_dir("extracted", "EFseqF350_EFseqR_sequences.qza")
+  train_input_taxa = qiime2_dir("extracted", "EFseqF350_EFseqR_taxonomy.qza")
+  with open(os.path.join(code_dir, "resources", "TEF1_primers.tsv"), mode = "r", newline = "") as file:
+      primer_dict = {key: value for key, value in csv.reader(file, delimiter = "\t")}
+  primer_seq_f = primer_dict.get(config["primer_f"], config["primer_f"])
+  primer_seq_r = primer_dict.get(config["primer_r"], config["primer_r"])
+else:
+  train_input_seqs = qiime2_dir("merged", "merged_sequences.qza")
+  train_input_taxa = qiime2_dir("merged", "merged_taxonomy.qza") 
+  primer_seq_f = "A" # default values to avoid horrors
+  primer_seq_r = "A"
+
 ## output handling
 
 alloutput = list()
@@ -76,4 +92,5 @@ include: "rules/fid_import_q2.smk"
 include: "rules/download_ncbi.smk"
 include: "rules/filter_ncbi.smk"
 include: "rules/merge_fid_ncbi.smk"
+include: "rules/extract_primers.smk"
 include: "rules/train.smk"

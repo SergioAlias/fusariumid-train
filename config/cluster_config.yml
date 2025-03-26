@@ -69,7 +69,15 @@ merge_fid_ncbi:
     memory: 2G
     output: logs/merge_fid_ncbi/merge_fid_ncbi_%j.out
     error: logs/merge_fid_ncbi/merge_fid_ncbi_%j.err
-    
+
+extract_primers:
+    jobname: extract_primers
+    time: 0-02:00:00
+    ncpus: 2 #cluster# Change extract_n_threads accordingly in config.yml
+    memory: 2G
+    output: logs/extract_primers/extract_primers_%j.out
+    error: logs/extract_primers/extract_primers_%j.err
+
 train:
     jobname: train
     time: 0-10:00:00

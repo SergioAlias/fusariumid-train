@@ -1,7 +1,7 @@
 rule train:
     input:
-        i_sequences = qiime2_dir("merged", "merged_sequences.qza"),
-        i_taxonomy = qiime2_dir("merged", "merged_taxonomy.qza") 
+        i_sequences = train_input_seqs,
+        i_taxonomy = train_input_taxa 
     output:
         o_classifier = qiime2_dir("classifier", "fid_ncbi_classifier.qza")      
     params:

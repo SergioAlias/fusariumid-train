@@ -23,3 +23,10 @@ correction_file: corrections.tsv                             #-------#    Header
 
 query_file: query.txt    #-------#    File containing the query for the GenBank TEF1 sequence search (adapted from 10.1371/journal.pone.0207988)
 download_njobs: 5        #-------#    Number of concurrent download connections
+
+### Extract amplicon sequences with PCR primers ###
+
+extract_primers: True    #-------#    True if you want to extract amplicon with primers, False otherwise (the rest of options in this section will be ignored then)
+primer_f: EFseqF350      #-------#    Forward primer name present in resources/TEF1_primers.tsv or custom sequence
+primer_r: EFseqR         #-------#    Reverse primer name present in resources/TEF1_primers.tsv or custom sequence
+extract_n_threads: 2     #cluster#    Number of threads to use for multithreaded processing
