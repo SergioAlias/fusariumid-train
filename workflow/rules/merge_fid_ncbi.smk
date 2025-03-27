@@ -3,12 +3,12 @@ rule merge_fid_ncbi:
         i_ncbi_seq = qiime2_dir("filtered", "ncbi_sequences_full_length.qza"),
         i_ncbi_tax = qiime2_dir("filtered", "ncbi_taxonomy_full_length.qza"),
         i_fid_seq = qiime2_dir("imported", "fid_sequences.qza"),
-        i_fid_tax = qiime2_dir("imported", "fid_taxonomy.qza")
+        i_fid_tax = fid_taxonomy_qza
 
     output:
         o_sequences_qza = qiime2_dir("merged", "merged_sequences.qza"),
         o_sequences_qzv = qiime2_dir("merged", "merged_sequences.qzv"),
-        o_taxonomy = qiime2_dir("merged", "merged_taxonomy.qza")        
+        o_taxonomy = merged_taxonomy_qza        
     params:
         outdir = qiime2_dir("merged")
     conda:

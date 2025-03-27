@@ -1,13 +1,13 @@
 rule extract_primers:
     input:
         i_sequences = qiime2_dir("merged", "merged_sequences.qza"),
-        i_taxonomy = qiime2_dir("merged", "merged_taxonomy.qza")
+        i_taxonomy = merged_taxonomy_qza
     output:
-        o_extracted_seqs_qza = qiime2_dir("extracted", "extracted_no_derep_sequences.qza"),
-        o_extracted_seqs_qzv = qiime2_dir("extracted", "extracted_no_derep_sequences.qzv"),
-        o_sequences_qza = qiime2_dir("extracted", "EFseqF350_EFseqR_sequences.qza"),
-        o_sequences_qzv = qiime2_dir("extracted", "EFseqF350_EFseqR_sequences.qzv"),
-        o_taxonomy = qiime2_dir("extracted", "EFseqF350_EFseqR_taxonomy.qza")        
+        o_extracted_seqs_qza = extracted_seqs_no_derep_qza,
+        o_extracted_seqs_qzv = extracted_seqs_no_derep_qzv,
+        o_sequences_qza = extracted_seqs_qza,
+        o_sequences_qzv = extracted_seqs_qzv,
+        o_taxonomy = extracted_taxonomy_qza        
     params:
         outdir = qiime2_dir("extracted"),
         primer_f = primer_seq_f,

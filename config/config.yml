@@ -13,20 +13,29 @@ outdir: /scratch/salias/projects    #-------#    Directory with all projects
 q2_version: "2024.2"                #-------#    QIIME 2 version
 py_version: "38"                    #-------#    Python version (as in the QIIME 2 YAML filename)
 
-### Databases ###
 
-db_dir: /home/salias/data/sf_databases/FUSARIUM-ID/raw_db    #-------#    Directory where database is stored
-db_file: FUSARIUMID_v.3.0_TEF1.fas                           #-------#    Database filename
+### FUSARIUM-ID ###
+
+db_dir: /home/salias/data/sf_databases/FUSARIUM-ID/raw_db    #-------#    Directory where FUSARIUM-ID database is stored
+db_file: FUSARIUMID_v.3.0_TEF1.fas                           #-------#    FUSARIUM-ID database filename
+db_version: "3.0"                                            #-------#    FUSARIUM-ID database version
 correction_file: corrections.tsv                             #-------#    Headerless 2-column TSV file containing original and replacement strings for correcting FUSARIUM-ID format inconsistencies
+
+
+### FUSARIUM-ID metadata ###
+
+keep_metadata: False    #-------#    True if you want to keep all metadata included in FUSARIUM-ID (it will be added to the s__ label), False otherwise (only the species name will be kept)
+
 
 ### Download TEF1 sequences from NCBI GenBank ###
 
 query_file: query.txt    #-------#    File containing the query for the GenBank TEF1 sequence search (adapted from 10.1371/journal.pone.0207988)
 download_njobs: 5        #-------#    Number of concurrent download connections
 
+
 ### Extract amplicon sequences with PCR primers ###
 
-extract_primers: True    #-------#    True if you want to extract amplicon with primers, False otherwise (the rest of options in this section will be ignored then)
-primer_f: EFseqF350      #-------#    Forward primer name present in resources/TEF1_primers.tsv or custom sequence
-primer_r: EFseqR         #-------#    Reverse primer name present in resources/TEF1_primers.tsv or custom sequence
+extract_primers: False    #-------#    True if you want to extract amplicon with primers, False otherwise (the rest of options in this section will be ignored then)
+primer_f: EFseqF350      #-------#    Forward primer name present in resources/TEF1_primers.tsv or custom sequence. If you use a custom sequence, it is recommended to add it to resources/TEF1_primers.tsv and use its name (otherwise the sequence itself will be added to the classifier filename)
+primer_r: EFseqR         #-------#    Reverse primer name present in resources/TEF1_primers.tsv or custom sequence. If you use a custom sequence, it is recommended to add it to resources/TEF1_primers.tsv and use its name (otherwise the sequence itself will be added to the classifier filename)
 extract_n_threads: 2     #cluster#    Number of threads to use for multithreaded processing

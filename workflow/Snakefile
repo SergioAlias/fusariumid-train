@@ -1,4 +1,5 @@
 import os, csv, json
+from datetime import datetime
 from snakemake.utils import min_version
 
 min_version("7.32.4")
@@ -54,25 +55,55 @@ correct_format_filepath = os.path.join(code_dir, "resources", config["correction
 with open(os.path.join("resources", config["query_file"]), 'r') as f:
   ncbi_query = f.read()
 
-## optional extract_primers rule handling
+## - optional extract_primers rule handling
+## - conditional taxonomy and final classifier filenames based on keep_metadata and extract_primers
+
+if config["keep_metadata"] == True:  
+    metadata_info = "all_info"
+else:
+    metadata_info = "until_sp"
 
 if config["extract_primers"] == True:
-  train_input_seqs = qiime2_dir("extracted", "EFseqF350_EFseqR_sequences.qza")
-  train_input_taxa = qiime2_dir("extracted", "EFseqF350_EFseqR_taxonomy.qza")
+  region_for_filename = f'{config["primer_f"]}_{config["primer_r"]}'
+  train_input_seqs = qiime2_dir("extracted", f"{region_for_filename}_sequences.qza")
+  train_input_taxa = qiime2_dir("extracted", f"{region_for_filename}_taxonomy_{metadata_info}.qza")
   with open(os.path.join(code_dir, "resources", "TEF1_primers.tsv"), mode = "r", newline = "") as file:
       primer_dict = {key: value for key, value in csv.reader(file, delimiter = "\t")}
   primer_seq_f = primer_dict.get(config["primer_f"], config["primer_f"])
   primer_seq_r = primer_dict.get(config["primer_r"], config["primer_r"])
 else:
+  region_for_filename = "full_length"
   train_input_seqs = qiime2_dir("merged", "merged_sequences.qza")
-  train_input_taxa = qiime2_dir("merged", "merged_taxonomy.qza") 
+  train_input_taxa = qiime2_dir("merged", f"merged_taxonomy_{metadata_info}.qza") 
   primer_seq_f = "A" # default values to avoid horrors
   primer_seq_r = "A"
+
+fid_taxonomy_tsv = metadata_dir(f"taxonomy_{metadata_info}.tsv")
+fid_taxonomy_qza = qiime2_dir("imported", f"fid_taxonomy_{metadata_info}.qza") 
+merged_taxonomy_qza = qiime2_dir("merged", f"merged_taxonomy_{metadata_info}.qza")
+extracted_taxonomy_qza = qiime2_dir("extracted", f"{region_for_filename}_taxonomy_{metadata_info}.qza")
+extracted_seqs_no_derep_qza = qiime2_dir("extracted", f"{region_for_filename}_no_derep_sequences.qza"),
+extracted_seqs_no_derep_qzv = qiime2_dir("extracted", f"{region_for_filename}_no_derep_sequences.qzv"),
+extracted_seqs_qza = qiime2_dir("extracted", f"{region_for_filename}_sequences.qza"),
+extracted_seqs_qzv = qiime2_dir("extracted", f"{region_for_filename}_sequences.qzv"),
+
+## classifier filename
+
+# get date where NCBI sequences were downloaded (defaults to current date if they are not downloaded yet)
+
+try:
+    ncbi_date = datetime.fromtimestamp(os.path.getmtime(qiime2_dir("imported", "ncbi_sequences_unfiltered.qza"))).strftime("%Y%m%d")
+except FileNotFoundError:
+    ncbi_date = datetime.now().strftime("%Y%m%d")
+
+# construct filename
+
+classifier_filename = qiime2_dir("classifier", f'fid_v{config["db_version"]}_ncbi_{ncbi_date}_q2_{config["q2_version"]}_{region_for_filename}_{metadata_info}.qza')
 
 ## output handling
 
 alloutput = list()
-alloutput.append(qiime2_dir("classifier", "fid_ncbi_classifier.qza"))
+alloutput.append(classifier_filename)
 
 ## rules
 

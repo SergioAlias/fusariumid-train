@@ -3,7 +3,7 @@ rule train:
         i_sequences = train_input_seqs,
         i_taxonomy = train_input_taxa 
     output:
-        o_classifier = qiime2_dir("classifier", "fid_ncbi_classifier.qza")      
+        o_classifier = classifier_filename      
     params:
         outdir = qiime2_dir("classifier")
     conda:

@@ -55,9 +55,20 @@ source init_fusariumid_train.sh
 
 6. If needed, modify `time`, `ncpus` and `memory` variables in `config/cluster_config.yml`.
 
-7. Run the following command to start the workflow:
+7. Run `fidt_run` to start the workflow. You can also run it until some key steps (using `--until rule_name`) to check the results before continuing and to change parameters if necessary (recommended). For example, a possible workflow split could be (see [**Drawing DAGs and rule graphs**](#drawing-dags-and-rule-graphs) for a visual workflow including all rule names):
+
 ```bash
-fidt_run
+fidt_run --until download_ncbi     # download sequences from NCBI GenBank (read the warning below)
+fidt_run --until filter_ncbi       # quality filtering and dereplication of NCBI sequences
+fidt_run                     # rest of workflow
+
+
+# Tip: add the flag -n to perform a dry-run. You will see how many jobs 
+# will be executed without actually running the workflow.
+
+# Example:
+
+# fidt_run --until download_ncbi -n
 ```
 
 ## Immediate submit and Screen
@@ -70,4 +81,4 @@ To create a screen, use `screen -S fusariumid_train`. Then, follow usage section
 
 ## Drawing DAGs and rule graphs
 
-Since FUSARIUM-ID-train is built over Snakemake, you can generate DAGs, rule graphs and file graphs of the workflow. We provide three commands for this: `fidt_draw_dag`, `fidt_draw_rulegraph` and `fidt_draw_filegraph`.
+Since FUSARIUM-ID-train is built over Snakemake, you can generate DAGs, rule graphs and file graphs of the workflow. We provide three commands for this: `fidt_draw_dag`, `fidt_draw_rulegraph` and `fidt_draw_filegraph`. These commands create `dag.pdf`, `rulegraph.pdf` and `filegraph.pdf` in the code directory.
