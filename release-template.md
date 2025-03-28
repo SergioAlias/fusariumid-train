@@ -9,26 +9,32 @@ Naive Bayes Classifiers for [FUSARIUM-ID v3.0](https://github.com/fusariumid/fus
 ## 📝 Changelog 
 
 - First release! 🎉
-- FUSARIUM-ID version 3.0.
-- TEF1 sequences of non-*Fusarium* fungi and other eukaryotes: downloaded from NCBI GenBank on March 26, 2025.
+- Updated FUSARIUM-ID to version 3.0.
+- Updated TEF1 sequences of non-*Fusarium* fungi and other eukaryotes: downloaded **93,977 sequences** from NCBI GenBank on **March 26, 2025** using the [query](https://github.com/SergioAlias/fusariumid-train/blob/main/resources/query.txt).
 
 ## 📊 Classifiers
 
 We provide different classifiers according to whether we extract the amplicon region with PCR primers:
 
-- `full_length` **(not recommended!)**: Full length sequences as they were downloaded from NCBI GenBank and FUSARIUM-ID. Note that sequences in the range of 100-3000 bp were downloaded from GenBank.
-- `EFseqF350_EFseqR`: Amplicon region extracted with primer sequences, ideally the same primer sequences that you used for your PCR / sequencing. In this case, these are custom primers we use in the lab (you can check primer sequences [here](https://github.com/SergioAlias/fusariumid-train/blob/main/resources/TEF1_primers.tsv?plain=1)).
-- Should I add other common primers? [Open an issue!](https://github.com/SergioAlias/fusariumid-train/issues/new?title=Add%20pre-computed%20classifiers%20with%20primer%20set:%20)
+- `full_length` **(not recommended!)**: Full length sequences as they were downloaded from NCBI GenBank and FUSARIUM-ID. Note that sequences in the range of 100-3000 bp were downloaded from GenBank (see the [query](https://github.com/SergioAlias/fusariumid-train/blob/main/resources/query.txt), `(100[SLEN]:3000[SLEN])`).
 
+- Amplicon region extracted with primer sequences, ideally the same primer sequences that you used for your PCR / sequencing:
+  - `EFseqF350_EFseqR`:  Amplicon region extracted with custom primers we use in the lab.
 
+  - `EF1-F2_EF1-R3`: Amplicon region extracted with primers used in [Boutigny et al. (2019)](https://doi.org/10.1371/journal.pone.0207988).
+
+  - 🤔 Should I add other common primers? [Open an issue!](https://github.com/SergioAlias/fusariumid-train/issues/new?title=Add%20pre-computed%20classifiers%20with%20primer%20set:%20)
+
+You can check primer sequences [here](https://github.com/SergioAlias/fusariumid-train/blob/main/resources/TEF1_primers.tsv?plain=1).
 
 We also provide two types of classifiers according to the information we keep from FUSARIUM-ID metadata:
 
-- `until_sp`: *Fusarium* taxnonomy only contains the species name in the `s__` level.
-- `all_info:` *Fusarium* taxnonomy contains the species name and the [Species Complex](https://doi.org/10.1016/j.funbio.2024.07.004) in the `s__` level.
+- `until_sp`: *Fusarium* taxonomy only contains the species name in the `s__` level.
+
+- `all_info`: *Fusarium* taxonomy contains the species name and the [Species Complex](https://doi.org/10.1016/j.funbio.2024.07.004) in the `s__` level.
 
 <details>
-<summary>🔍 Why is this relevant?</summary>
+<summary>🔍 Why is this relevant? (click to show)</summary>
 <br>
 
 > FUSARIUM-ID contains some undescribed *Fusarium* entries. These are annotated at the species level with the Species Complex to which the sequence belongs inmediately followed by the string "undesc" (e.g. FFSCundesc). However, when available, informal *ad hoc* nomenclature (Species Complex designation followed by a number) is included for those undescribed species (e.g. FSAMSC1).
@@ -73,7 +79,7 @@ If you use the classifiers, you should cite the following papers (click to show 
 <summary>🍄 FUSARIUM-ID v3.0</summary>
 <br>
 
-> Torres-Cruz, T. J., Whitaker, B. K., Proctor, R. H., Broders, K., Laraba, I., Kim, H. S., ... & Geiser, D. M. (2022). FUSARIUM-ID v. 3.0: An updated, downloadable resource for *Fusarium* species identification. Plant disease, 106(6), 1610-1616.
+> Torres-Cruz, T. J., Whitaker, B. K., Proctor, R. H., Broders, K., Laraba, I., Kim, H. S., ... & Geiser, D. M. (2022). FUSARIUM-ID v. 3.0: An updated, downloadable resource for *Fusarium* species identification. Plant disease, 106(6), 1610-1616. https://doi.org/10.1094/PDIS-09-21-2105-SR
 
 </details>
 

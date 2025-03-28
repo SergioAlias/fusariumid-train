@@ -9,31 +9,33 @@
 
 ---
 
-> 🚧 **IMPORTANT: A major re-optimization is currently underway!** Pre-trained classifiers have been temporarily removed because I am making substantial changes to the workflow. This banner will disappear when everything is back to normal. In the meantime, I do not recommend using the workflow either.
-
-### ~~[🎉 Pre-trained FUSARIUM-ID classifiers available here!](https://github.com/SergioAlias/fusariumid-train/releases)~~
+### [🎉 Pre-trained FUSARIUM-ID classifiers available here!](https://github.com/SergioAlias/fusariumid-train/releases)
 
 ---
 
 A [Snakemake](https://snakemake.readthedocs.io/en/v7.32.2/) workflow to train [QIIME 2](https://qiime2.org/) taxonomic [Naive Bayes classifiers](https://resources.qiime2.org/#qiime-2-2024-5-present) for the [FUSARIUM-ID database](https://github.com/fusariumid/fusariumid). This database contains sequences of the Translation Elongation Factor 1 alpha (TEF1, also known as EF1α), which serves as a considerably better marker for species identification in the filamentous fungal genus [*Fusarium*](https://en.wikipedia.org/wiki/Fusarium) than [ITS](https://en.wikipedia.org/wiki/Internal_transcribed_spacer), the standard marker for all Fungi.
 
-If you don't want to run the workflow, you can ~~[pick one of the pre-computed classfiers here!](https://github.com/SergioAlias/fusariumid-train/releases)~~
+If you don't want to run the workflow, you can [pick one of the pre-computed classfiers here!](https://github.com/SergioAlias/fusariumid-train/releases).
 
 >🐍 *This workflow uses Snakemake 7.32.4. Newer versions (8+) contain [backwards incompatible changes](https://snakemake.readthedocs.io/en/stable/getting_started/migration.html) that may result in this pipeline not working in a Slurm HPC queue system.*
 
 This pipeline:
 
-1. Parses the FUSARIUM-ID multi-FASTA headers searching metadata and saves it as a TSV file. You can read about how FUSARIUM-ID stores metadata in [this manual](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutorials.pdf) (Spanish version [here](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutoriales_Espan%CC%83ol.pdf)) and in the [FUSARIUM-ID publication](https://apsjournals.apsnet.org/doi/10.1094/PDIS-09-21-2105-SR).
+1. Parses the FUSARIUM-ID multi-FASTA headers searching metadata and saves it as a TSV file (rules `fid_correct_format`, `fid_extract_metadata` and `fid_reduce_metadata`). You can read about how FUSARIUM-ID stores metadata in [this manual](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutorials.pdf) (Spanish version [here](https://github.com/fusariumid/fusariumid/blob/main/FUSARIUMID_BLAST_Tutoriales_Espan%CC%83ol.pdf)) and in the [FUSARIUM-ID publication](https://apsjournals.apsnet.org/doi/10.1094/PDIS-09-21-2105-SR).
 
-2. Formats metadata to match SILVA and UNITE taxonomy style.
+2. Formats metadata to match SILVA and UNITE taxonomy style (rule `fid_build_taxonomy`).
+   
+3. Imports taxonomy and sequences into QIIME 2 (rule `fid_import_q2`).
 
-3. Downloads TEF1 sequences from GenBank for non-*Fusarium* fungi and other eukaryotes.
+4. Downloads TEF1 sequences from GenBank for non-*Fusarium* fungi and other eukaryotes using a modified version of a query used in [Boutigny et al. (2019)](https://doi.org/10.1371/journal.pone.0207988) (rule `download_ncbi`).
 
-4. **🚧 ...Work in progress here... 🚧**
+5. Filters and dereplicates NCBI GenBank sequences (rule `filter_ncbi`).
 
-5. Imports taxonomy and sequences into QIIME 2.
+6. Merges FUSARIUM-ID and NCBI GenBank sequences (rule `merge_fid_ncbi`).
 
-6.  Trains a Naive Bayes classfier that can be used in [`qiime feature-classifier classify-sklearn`](https://docs.qiime2.org/2024.2/plugins/available/feature-classifier/classify-sklearn/).
+7. Optionally, extracts the amplicon region using PCR primers and dereplicates again (rule `extract_primers`).
+
+8. Trains a Naive Bayes classfier that can be used in [`qiime feature-classifier classify-sklearn`](https://docs.qiime2.org/2024.2/plugins/available/feature-classifier/classify-sklearn/) (rule `train`).
 
 ## Requisites
 
@@ -60,7 +62,7 @@ source init_fusariumid_train.sh
 ```bash
 fidt_run --until download_ncbi     # download sequences from NCBI GenBank (read the warning below)
 fidt_run --until filter_ncbi       # quality filtering and dereplication of NCBI sequences
-fidt_run                     # rest of workflow
+fidt_run                           # rest of workflow
 
 
 # Tip: add the flag -n to perform a dry-run. You will see how many jobs 
@@ -70,6 +72,8 @@ fidt_run                     # rest of workflow
 
 # fidt_run --until download_ncbi -n
 ```
+> ⚠️ **Before downloading sequences from NCBI GenBank**, please be aware of the **NCBI Disclaimer and Copyright notice** ([Policies and Disclaimers - NCBI](https://www.ncbi.nlm.nih.gov/home/about/policies/)), particularly *"run retrieval scripts on weekends or between 9 pm and 5 am Eastern Time weekdays for any series of more than 100 requests"*. As a rule of thumb, if you are downloading **more than 125,000 sequences**, only run this method at those times.
+
 
 ## Immediate submit and Screen
 

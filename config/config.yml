@@ -35,7 +35,7 @@ download_njobs: 5        #-------#    Number of concurrent download connections
 
 ### Extract amplicon sequences with PCR primers ###
 
-extract_primers: False    #-------#    True if you want to extract amplicon with primers, False otherwise (the rest of options in this section will be ignored then)
+extract_primers: True    #-------#    True if you want to extract amplicon with primers, False otherwise (the rest of options in this section will be ignored then)
 primer_f: EFseqF350      #-------#    Forward primer name present in resources/TEF1_primers.tsv or custom sequence. If you use a custom sequence, it is recommended to add it to resources/TEF1_primers.tsv and use its name (otherwise the sequence itself will be added to the classifier filename)
 primer_r: EFseqR         #-------#    Reverse primer name present in resources/TEF1_primers.tsv or custom sequence. If you use a custom sequence, it is recommended to add it to resources/TEF1_primers.tsv and use its name (otherwise the sequence itself will be added to the classifier filename)
 extract_n_threads: 2     #cluster#    Number of threads to use for multithreaded processing
